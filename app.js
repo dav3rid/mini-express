@@ -1,8 +1,7 @@
 const app = require('express')();
 
 app.use('/hello', (req, res, next) => {
-  return res.status(200).send({ msg: 'hello!!!' });
-  console.log('This should break when linting!');
+  res.status(200).send({ msg: 'hello!!!' });
 });
 
 app.use((err, req, res, next) => {
