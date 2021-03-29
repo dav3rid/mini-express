@@ -10,7 +10,7 @@ on:
 
 jobs:
   lint:
-    name: lint
+    name: Lint
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     steps:
@@ -24,3 +24,12 @@ jobs:
         run: npm install
       - name: Run Linter
         run: npm run lint
+  test:
+    name: Test App
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Run Containerised Tests
+        run: ./docker.test.sh
